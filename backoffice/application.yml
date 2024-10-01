@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: backend-app-argocd
+  name: backoffice-app-argocd
   namespace: argocd
 spec:
   project: default
@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/haythem05/Deployments.git
     targetRevision: main
-    path: backend
+    path: backoffice
   destination:
     server: https://kubernetes.default.svc
     namespace: myapp
