@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  annotations:
+    # Example annotations (adjust based on your Ingress Controller):
+    nginx.ingress.kubernetes.io/rewrite-target: /
+     # cert-manager.io/cluster-issuer: "letsencrypt-prod"  # Optional: for TLS
+spec:
+  ingressClassName: nginx  # Match your Ingress Controller (e.g., nginx, alb)
+  rules:
+  - host: grafana.local # Replace with your domain
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana # Name of your Grafana Service
+            port:
+              number: 3000  # Grafana's default port
