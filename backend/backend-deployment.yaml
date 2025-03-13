@@ -21,7 +21,7 @@ spec:
         env:
         - name: SPRING_DATASOURCE_URL
           value: "jdbc:mysql://db-service.database.svc.cluster.local:3306/pokerit?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
-        - name: SPRING_DATASOURCE_USERNAME
+        - name: SPRING_DATASOURCE_USERNAME 
           value: "root"
         - name: SPRING_DATASOURCE_PASSWORD
           value: ""

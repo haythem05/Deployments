@@ -2,13 +2,41 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: prometheus-server-conf
-  namespace: prometheus
+  namespace: prometheus  # Ensure Prometheus is in the "prometheus" namespace
 data:
   prometheus.yml: |
     global:
       scrape_interval: 15s
       evaluation_interval: 15s
+
     scrape_configs:
+      # Existing Prometheus self-scrape
       - job_name: 'prometheus'
         static_configs:
           - targets: ['localhost:9090']
+
+      # Add this new job for your Java Spring Boot app
+      - job_name: 'kubernetes-microservices'
+        kubernetes_sd_configs:
+          - role: service  # Discover services
+            namespaces:
+              names: ["microservices"]  # Target your app's namespace
+
+        relabel_configs:
+          # Keep only services with the annotation `prometheus.io/scrape: "true"`
+          - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+            action: keep
+            regex: "true"
+
+          # Rewrite the metrics path using the annotation `prometheus.io/path`
+          - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+            action: replace
+            target_label: __metrics_path__
+            regex: (.+)
+
+          # Rewrite the address using the annotation `prometheus.io/port`
+          - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
+            action: replace
+            regex: ([^:]+)(?::\d+)?;(\d+)
+            replacement: $1:$2
+            target_label: __address__

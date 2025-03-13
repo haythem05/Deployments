@@ -26,3 +26,5 @@ spec:
           configMap:
             name: prometheus-server-conf
             defaultMode: 420
+            scrape_configs:
+  
