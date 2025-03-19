@@ -18,3 +18,11 @@ spec:
             name: backoffice-service
             port:
               number: 80
+
+      - path: /frontoffice
+        pathType: Prefix
+        backend:
+          service:
+            name: backoffice-service
+            port:
+              number: 80

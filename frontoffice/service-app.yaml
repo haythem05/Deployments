@@ -3,6 +3,10 @@ kind: Service
 metadata:
   name: frontoffice-service
   namespace: microservices
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics"
+    prometheus.io/port: "80"
 spec:
   selector:
     app: frontoffice
@@ -16,6 +20,10 @@ kind: Service
 metadata:
   name: backoffice-service
   namespace: microservices
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics"
+    prometheus.io/port: "80"
 spec:
   selector:
     app: backoffice
