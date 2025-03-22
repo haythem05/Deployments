@@ -164,12 +164,37 @@ global:
 
 ## Argo Configs
 configs:
-  # General Argo CD configuration. Any values you put under `.configs.cm` are passed to argocd-cm ConfigMap.
-  ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
   cm:
-    # -- Create the argocd-cm configmap for [declarative setup]
-    create: true
-
+    initialApplications: |-
+      [
+        {
+          "apiVersion": "argoproj.io/v1alpha1",
+          "kind": "Application",
+          "metadata": {
+            "name": "app-of-apps",
+            "namespace": "argocd"
+          },
+          "spec": {
+            "project": "default",
+            "source": {
+              "repoURL": "https://github.com/haythem05/Deployments.git",
+              "targetRevision": "main",
+              "path": "apps"
+            },
+            "destination": {
+              "server": "https://kubernetes.default.svc",
+              "namespace": "argocd"
+            },
+            "syncPolicy": {
+              "automated": {
+                "selfHeal": true,
+                "prune": true
+              }
+            }
+          }
+        }
+      ]
+    
     # -- Annotations to be added to argocd-cm configmap
     annotations: {}
 
