@@ -2185,14 +2185,14 @@ kubeScheduler:
     ## If null or unset, the value is determined dynamically based on target Kubernetes version due to change
     ## of default port in Kubernetes 1.23.
     ##
-    port: null
-    targetPort: null
+    port: 10259
+    targetPort: 10259
     ipDualStack:
       enabled: false
       ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
-    # selector:
-    #   component: kube-scheduler
+      selector:
+        component: kube-scheduler
 
   serviceMonitor:
     enabled: true
