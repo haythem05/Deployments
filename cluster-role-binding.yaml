@@ -1,0 +1,28 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: prometheus-api-server-metrics
+  labels:
+    app: prometheus
+    component: monitoring
+rules:
+- nonResourceURLs: 
+  - "/metrics"
+  - "/metrics/*"  # Covers subpaths like /metrics/cadvisor
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus-api-server-metrics
+  labels:
+    app: prometheus
+    component: monitoring
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus-api-server-metrics
+subjects:
+- kind: ServiceAccount
+  name: monitoring-kube-prometheus-prometheus
+  namespace: monitoring
