@@ -316,7 +316,20 @@ defaultRules:
 
 ## Provide custom recording or alerting rules to be deployed into the cluster.
 ##
-additionalPrometheusRulesMap: {}
+additionalPrometheusRulesMap: 
+  test-email-rule:
+    groups:
+      - name: test.email.group
+        rules:
+          - alert: TestEmailAlert
+            expr: vector(1)
+            for: 1m
+            labels:
+              severity: critical
+            annotations:
+              summary: "🚨 This is a test email alert"
+              description: "If you see this, Alertmanager email setup works!"
+
 #  rule-name:
 #    groups:
 #    - name: my_group
@@ -533,12 +546,20 @@ alertmanager:
       group_wait: 30s
       group_interval: 5m
       repeat_interval: 12h
-      receiver: 'null'
+      receiver: 'gmail-alerts'
       routes:
       - receiver: 'null'
         matchers:
           - alertname = "Watchdog"
     receivers:
+    - name: 'gmail-alerts'
+      email_configs:
+        - to: 'haythem.loueti@outlook.com'
+          from: 'oueslatighassen5201@gmail.com'
+          smarthost: 'smtp.gmail.com:587'
+          auth_username: 'oueslatighassen5201@gmail.com'
+          auth_password: 'marcbolialydwvun'
+          require_tls: true
     - name: 'null'
     templates:
     - '/etc/alertmanager/config/*.tmpl'
