@@ -316,19 +316,19 @@ defaultRules:
 
 ## Provide custom recording or alerting rules to be deployed into the cluster.
 ##
-additionalPrometheusRulesMap: 
-  test-email-rule:
-    groups:
-      - name: test.email.group
-        rules:
-          - alert: TestEmailAlert
-            expr: vector(1)
-            for: 1m
-            labels:
-              severity: critical
-            annotations:
-              summary: "🚨 This is a test email alert"
-              description: "If you see this, Alertmanager email setup works!"
+additionalPrometheusRulesMap: {}
+  #test-email-rule:
+    #groups:
+      #- name: test.email.group
+       # rules:
+        #  - alert: TestEmailAlert
+         #   expr: vector(1)
+          #  for: 1m
+           # labels:
+            #  severity: critical
+           # annotations:
+            #  summary: "🚨 This is a test email alert"
+            #  description: "If you see this, Alertmanager email setup works!"
 
 #  rule-name:
 #    groups:
