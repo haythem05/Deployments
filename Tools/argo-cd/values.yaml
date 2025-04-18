@@ -661,6 +661,9 @@ extraObjects:
               - name: prometheus-stack-helm
                 appPath: Tools/prometheus-stack
                 namespace: monitoring
+              - name: loki-stack
+                appPath: Tools/loki-stack
+                namespace: logging
               - name: backend
                 appPath: backend
                 namespace: microservices
