@@ -649,23 +649,38 @@ extraObjects:
       generators:
         - list:
             elements:
-              - name: app-of-apps
+              - name: frontoffice
+                appPath: frontoffice
+                namespace: microservices
+              - name: backoffice
+                appPath: backoffice
+                namespace: microservices
+              - name: database
+                appPath: Database
+                namespace: database
+              - name: prometheus-stack-helm
+                appPath: Tools/prometheus-stack
+                namespace: monitoring
+              - name: backend
+                appPath: backend
+                namespace: microservices
       template:
         metadata:
-          name: app-of-apps
+          name: '{{ "{{name}}" }}'
         spec:
           project: default
           source:
             repoURL: https://github.com/haythem05/Deployments.git
             targetRevision: main
-            path: apps
+            path: '{{ "{{appPath}}" }}'
           destination:
             server: https://kubernetes.default.svc
-            namespace: argocd
+            namespace: '{{ "{{namespace}}" }}'
           syncPolicy:
             automated:
               selfHeal: true
               prune: true
+
 ## Application controller
 controller:
   # -- Application controller name string
