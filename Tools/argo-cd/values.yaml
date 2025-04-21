@@ -667,6 +667,9 @@ extraObjects:
               - name: backend
                 appPath: backend
                 namespace: microservices
+              - name: minio
+                appPath: Tools/minio
+                namespace: minio
       template:
         metadata:
           name: '{{ "{{name}}" }}'
