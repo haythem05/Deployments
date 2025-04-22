@@ -670,6 +670,9 @@ extraObjects:
               - name: minio
                 appPath: Tools/minio
                 namespace: minio
+              - name: velero
+                appPath: Tools/velero
+                namespace: velero
       template:
         metadata:
           name: '{{ "{{name}}" }}'
