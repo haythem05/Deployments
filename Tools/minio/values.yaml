@@ -199,7 +199,7 @@ service:
 
 ingress:
   enabled: false
-  ingressClassName: ~
+  ingressClassName: "nginx"
   labels: {}
     # node-role.kubernetes.io/ingress: platform
   annotations: {}
@@ -239,8 +239,8 @@ consoleService:
   externalTrafficPolicy: Cluster
 
 consoleIngress:
-  enabled: false
-  ingressClassName: ~
+  enabled: true
+  ingressClassName: "nginx"
   labels: {}
     # node-role.kubernetes.io/ingress: platform
   annotations: {}
@@ -253,7 +253,7 @@ consoleIngress:
     # nginx.ingress.kubernetes.io/whitelist-source-range: 0.0.0.0/0
   path: /
   hosts:
-    - console.minio-example.local
+    - minio-console.local
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
