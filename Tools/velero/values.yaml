@@ -176,14 +176,14 @@ nodeSelector: {}
 dnsConfig: {}
 
 # Extra volumes for the Velero deployment. Optional.
-extraVolumes: 
-  - name: plugins
-    emptyDir: {}
+extraVolumes: []
+  #- name: plugins
+   # emptyDir: {}
 
 # Extra volumeMounts for the Velero deployment. Optional.
-extraVolumeMounts:
-  - mountPath: /plugins
-    name: plugins
+extraVolumeMounts: []
+  #- mountPath: /plugins
+   # name: plugins
 
 # Extra K8s manifests to deploy
 extraObjects: []
