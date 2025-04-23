@@ -642,13 +642,19 @@ nodeAgent:
 #       - persistentVolumeClaims
 #       excludedClusterScopedResources:
 #       - persistentVolumes
-#schedules: 
- # daily-backup:
-  #  schedule: "*/5 * * * *"    # Every 5 minutes (for testing)
-   # template:
-    #  ttl: "24h"               # Retain backup for 24 hours
-     # includedNamespaces:
-      #  - kube-system
+  schedules: 
+   weekly-backup:
+    schedule: "0 3 * * 1"    # Every Monday at 3:00 AM
+    template:
+      ttl: "168h"            # Keep backup for 7 days
+      includedNamespaces:
+        - kube-system
+        - microservices
+        - argocd
+        - monitoring
+        - ingress-nginx
+        
+
 
 # Velero ConfigMaps.
 # Eg:
