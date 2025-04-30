@@ -24,7 +24,7 @@ customLabels: {}
 
 # clusterScoped is whether chaos-mesh should manage kubernetes cluster wide chaos
 # Also see rbac.create and controllerManager.serviceAccount
-clusterScoped: true
+clusterScoped: false
 
 # Creating rbac API Objects. Also see clusterScoped and controllerManager.serviceAccount
 rbac:
@@ -94,10 +94,11 @@ controllerManager:
     # METRICS_PORT is configured the port for chaos-controller-manager exposing prometheus metrics
     METRICS_PORT: 10080
   # If enabled, only pods in the namespace annotated with `"chaos-mesh.org/inject": "enabled"` could be injected
-  enableFilterNamespace: false
+  enableFilterNamespace: true
   # targetNamespace only works with clusterScoped is false(namespace scoped mode).
   # It means namespace which will be injected chaos
   targetNamespace: chaos-mesh
+
 
   service:
     # Kubernetes Service type for service chaos-controller-manager
@@ -124,7 +125,8 @@ controllerManager:
   podAnnotations: {}
   # A list of controllers to enable. "*" enables all controllers by default.
   enabledControllers:
-    - "*"
+    - podchaos
+    - networkchaos
   # A list of webhooks to enable. "*" enables all webhooks by default.
   enabledWebhooks:
     - "*"
@@ -206,9 +208,9 @@ chaosDaemon:
   podSecurityPolicy: false
   # runtime specifies which container runtime to use. Currently
   # we only supports docker, containerd and CRI-O.
-  runtime: docker
+  runtime: containerd
   # socketPath specifies the path of container runtime socket on the host.
-  socketPath: /var/run/docker.sock
+  socketPath: /run/containerd/containerd.sock
 
   # If you are using Kind or using containerd as CRI, you can use the
   # config below to use containerd as the runtime in chaos-daemon.
@@ -387,7 +389,7 @@ dashboard:
     TTL_WORKFLOW: 336h
   ingress:
     ## Set to true to enable ingress record generation
-    enabled: false
+    enabled: true
 
     ## Set this to true in order to add the corresponding annotations for cert-manager
     certManager: false
@@ -426,7 +428,7 @@ dashboard:
     apiVersionOverrides: ""
 
     # Defines which ingress controller will implement the resource
-    ingressClassName: ""
+    ingressClassName: "nginx"
 
 dnsServer:
   # Enable DNS Server which required by DNSChaos
