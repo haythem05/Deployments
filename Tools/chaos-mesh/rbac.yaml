@@ -1,0 +1,37 @@
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  namespace: default
+  name: account-default-viewer-itqqp
+
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: default
+  name: role-default-viewer-itqqp
+rules:
+- apiGroups: [""]
+  resources: ["pods", "namespaces"]
+  verbs: ["get", "watch", "list"]
+- apiGroups: ["chaos-mesh.org"]
+  resources: [ "*" ]
+  verbs: ["get", "list", "watch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: bind-default-viewer-itqqp
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: account-default-viewer-itqqp
+  namespace: default
+roleRef:
+  kind: Role
+  name: role-default-viewer-itqqp
+  apiGroup: rbac.authorization.k8s.io
+
+#kubectl create token account-default-viewer-itqqp
+#kubectl describe -n default secrets account-default-viewer-itqqp
