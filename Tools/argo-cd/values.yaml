@@ -646,6 +646,10 @@ extraObjects:
       name: app-of-apps
       namespace: argocd
     spec:
+      syncPolicy:
+        syncOptions:
+        - ServerSideApply=true    
+        - Replace=true
       generators:
         - list:
             elements:
