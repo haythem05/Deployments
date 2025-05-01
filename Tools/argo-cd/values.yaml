@@ -673,6 +673,9 @@ extraObjects:
               - name: velero
                 appPath: Tools/velero
                 namespace: velero
+              - name: chaos-mesh
+                appPath: Tools/chaos-mesh
+                namespace: chaos-mesh  
       template:
         metadata:
           name: '{{ "{{name}}" }}'
