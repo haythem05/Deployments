@@ -124,8 +124,8 @@ controllerManager:
   podAnnotations: {}
   # A list of controllers to enable. "*" enables all controllers by default.
   enabledControllers:
-    - podchaos
-    - networkchaos
+    - "*"
+    
   # A list of webhooks to enable. "*" enables all webhooks by default.
   enabledWebhooks:
     - "*"
