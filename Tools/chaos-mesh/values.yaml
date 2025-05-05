@@ -24,7 +24,7 @@ customLabels: {}
 
 # clusterScoped is whether chaos-mesh should manage kubernetes cluster wide chaos
 # Also see rbac.create and controllerManager.serviceAccount
-clusterScoped: false
+clusterScoped: true
 
 # Creating rbac API Objects. Also see clusterScoped and controllerManager.serviceAccount
 rbac:
