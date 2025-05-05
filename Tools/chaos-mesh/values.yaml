@@ -97,9 +97,8 @@ controllerManager:
   enableFilterNamespace: true
   # targetNamespace only works with clusterScoped is false(namespace scoped mode).
   # It means namespace which will be injected chaos
-  targetNamespace:
-   - chaos-mesh
-   - microservices
+  targetNamespace: chaos-mesh
+
   service:
     # Kubernetes Service type for service chaos-controller-manager
     type: ClusterIP
