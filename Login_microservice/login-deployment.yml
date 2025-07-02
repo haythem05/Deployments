@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: login-container
-          image: your-dockerhub-user/login-microservice:latest
+          image: haythemloueti/login-microservice:1.0
           ports:
             - containerPort: 8081
           env:
