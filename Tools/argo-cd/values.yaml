@@ -656,7 +656,7 @@ extraObjects:
               - name: login-microservice
                 appPath: Login_microservice
                 namespace: microservices
-              - name: User-microservice
+              - name: user-microservice
                 appPath: User_microservice
                 namespace: microservices  
               - name: frontoffice
