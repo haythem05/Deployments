@@ -668,9 +668,6 @@ extraObjects:
               - name: loki-stack
                 appPath: Tools/loki-stack
                 namespace: logging
-              - name: backend
-                appPath: backend
-                namespace: microservices
               - name: minio
                 appPath: Tools/minio
                 namespace: minio
