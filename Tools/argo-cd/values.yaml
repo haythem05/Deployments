@@ -653,6 +653,9 @@ extraObjects:
       generators:
         - list:
             elements:
+              - name: login-microservice
+                appPath: Login_microservice
+                namespace: microservices
               - name: frontoffice
                 appPath: frontoffice
                 namespace: microservices
