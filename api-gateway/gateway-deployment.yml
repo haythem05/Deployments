@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: haythemloueti/api-gateway:latest
+          image: haythemloueti/api-gateway:1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
