@@ -653,6 +653,9 @@ extraObjects:
       generators:
         - list:
             elements:
+              - name: api-gateway
+                appPath: api-gateway
+                namespace: microservices
               - name: login-microservice
                 appPath: Login_microservice
                 namespace: microservices
