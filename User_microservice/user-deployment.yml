@@ -17,6 +17,7 @@ spec:
       containers:
         - name: user-microservice
           image: haythemloueti/user_microservice:1.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 8082
           env:

@@ -16,6 +16,7 @@ spec:
       containers:
         - name: login-container
           image: haythemloueti/login-microservice:1.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 8081
           env:
