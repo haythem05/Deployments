@@ -653,6 +653,9 @@ extraObjects:
       generators:
         - list:
             elements:
+              - name: longhorn
+                appPath: longhorn
+                namespace: longhorn-system
               - name: api-gateway
                 appPath: api-gateway
                 namespace: microservices
