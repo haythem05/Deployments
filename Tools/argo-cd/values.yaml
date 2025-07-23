@@ -654,7 +654,7 @@ extraObjects:
         - list:
             elements:
               - name: longhorn
-                appPath: longhorn
+                appPath: Tools/longhorn
                 namespace: longhorn-system
               - name: api-gateway
                 appPath: api-gateway
