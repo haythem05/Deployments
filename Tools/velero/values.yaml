@@ -368,11 +368,11 @@ configuration:
 
   # Parameters for the VolumeSnapshotLocation(s). Configure multiple by adding other element(s) to the volumeSnapshotLocation slice.
   # See https://velero.io/docs/v1.6/api-types/volumesnapshotlocation/
-  #volumeSnapshotLocation:
+  volumeSnapshotLocation:
     # name is the name of the volume snapshot location where snapshots are being taken. Required.
- # - name:
+  - name: default
     # provider is the name for the volume snapshot provider.
-  #  provider:
+    provider: velero.io/csi
     #credential:
       # name of the secret used by this volumeSnapshotLocation.
   #    name:
@@ -538,7 +538,7 @@ credentials:
 # Whether to create backupstoragelocation crd, if false => do not create a default backup location
 backupsEnabled: true
 # Whether to create volumesnapshotlocation crd, if false => disable snapshot feature
-snapshotsEnabled: false
+snapshotsEnabled: true
 
 # Whether to deploy the node-agent daemonset.
 deployNodeAgent: true
