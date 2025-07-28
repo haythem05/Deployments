@@ -448,7 +448,7 @@ configuration:
   defaultSnapshotMoveData:
   # Comma separated list of velero feature flags. default: empty
    #features: EnableCSI
-  features:
+  features: EnableCSI
   # Resource requests/limits to specify for the repository-maintenance job. Optional.
   # https://velero.io/docs/v1.14/repository-maintenance/#resource-limitation
   repositoryMaintenanceJob:
@@ -470,7 +470,7 @@ configuration:
   extraEnvVars: {}
 
   # Set true for backup all pod volumes without having to apply annotation on the pod when used file system backup Default: false.
-  defaultVolumesToFsBackup: true
+  defaultVolumesToFsBackup: false
 
   # How often repository maintain is run for repositories by default.
   defaultRepoMaintainFrequency:
