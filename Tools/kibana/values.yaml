@@ -1,8 +1,8 @@
 ---
 elasticsearchHosts: "https://elasticsearch-master:9200"
-elasticsearchCertificateSecret: elasticsearch-master-certs
-elasticsearchCertificateAuthoritiesFile: ca.crt
-elasticsearchCredentialSecret: elasticsearch-master-credentials
+elasticsearchCertificateSecret: ""
+elasticsearchCertificateAuthoritiesFile: ""
+elasticsearchCredentialSecret: ""
 
 replicas: 1
 
@@ -11,7 +11,7 @@ replicas: 1
 # syntax here
 extraEnvs:
   - name: "NODE_OPTIONS"
-    value: "--max-old-space-size=1800"
+    value: "--max-old-space-size=512"
 #  - name: MY_ENVIRONMENT_VAR
 #    value: the_value_goes_here
 
@@ -51,11 +51,11 @@ podAnnotations: {}
 
 resources:
   requests:
-    cpu: "1000m"
-    memory: "2Gi"
+    cpu: "250m"
+    memory: "512Mi"
   limits:
-    cpu: "1000m"
-    memory: "2Gi"
+    cpu: "500m"
+    memory: "1Gi"
 
 protocol: http
 
@@ -136,14 +136,14 @@ service:
   httpPortName: http
 
 ingress:
-  enabled: false
+  enabled: true
   className: "nginx"
   pathtype: ImplementationSpecific
   annotations: {}
   # kubernetes.io/ingress.class: nginx
   # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: kibana-example.local
+    - host: kibana.local
       paths:
         - path: /
   #tls: []
