@@ -616,11 +616,7 @@ configs:
 ## Note: Supports use of custom Helm templates
 extraObjects:
   # - apiVersion: secrets-store.csi.x-k8s.io/v1
-  #   kind: SecretProviderClass
-  #   metadata:
-  #     name: argocd-secrets-store
-  #   spec:
-  #     provider: aws
+  #   kind: SecretProviderClassingress
   #     parameters:
   #       objects: |
   #         - objectName: "argocd"
@@ -653,6 +649,9 @@ extraObjects:
       generators:
         - list:
             elements:
+              - name: kibana 
+                appPath: Tools/kibana
+                namespace: efk
               - name: elasticsearch
                 appPath: Tools/elasticsearch
                 namespace: efk
