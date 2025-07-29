@@ -653,6 +653,9 @@ extraObjects:
       generators:
         - list:
             elements:
+              - name: elasticsearch
+                appPath: Tools/elasticsearch
+                namespace: efk
               - name: longhorn
                 appPath: Tools/longhorn
                 namespace: longhorn-system
