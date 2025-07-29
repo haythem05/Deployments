@@ -10,6 +10,11 @@ replicas: 1
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
 # syntax here
 extraEnvs:
+  - name: SERVICE_ACCOUNT_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: kibana-kibana-es-token
+        key: token
   - name: "NODE_OPTIONS"
     value: "--max-old-space-size=512"
 #  - name: MY_ENVIRONMENT_VAR
@@ -25,11 +30,11 @@ envFrom: []
 # A list of secrets and their paths to mount inside the pod
 # This is useful for mounting certificates for security and for mounting
 # the X-Pack license
-secretMounts: []
-#  - name: kibana-keystore
-#    secretName: kibana-keystore
-#    path: /usr/share/kibana/data/kibana.keystore
-#    subPath: kibana.keystore # optional
+secretMounts: 
+  - name: elasticsearch-certs
+    secretName: elasticsearch-master-certs
+    path: /usr/share/kibana/config/certs
+#   subPath: kibana.keystore # optional
 
 hostAliases: []
 #- ip: "127.0.0.1"
