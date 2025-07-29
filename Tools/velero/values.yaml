@@ -380,8 +380,7 @@ configuration:
    #   key:
     # Additional provider-specific configuration. See link above
     # for details of required/optional fields for your provider.
-    config:
-       volumeSnapshotClass: longhorn-snapshot
+    config: {}
   #    region:
   #    apiTimeout:
   #    resourceGroup:
