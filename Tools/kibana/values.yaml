@@ -2,7 +2,7 @@
 elasticsearchHosts: "https://elasticsearch-master:9200"
 elasticsearchCertificateSecret: elasticsearch-master-certs
 elasticsearchCertificateAuthoritiesFile: ca.crt
-#elasticsearchCredentialSecret: elasticsearch-master-credentials
+elasticsearchCredentialSecret: elasticsearch-master-credentials
 
 replicas: 1
 
@@ -10,21 +10,11 @@ replicas: 1
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
 # syntax here
 extraEnvs:
-  - name: ELASTICSEARCH_USERNAME
+  - name: SERVICE_ACCOUNT_TOKEN
     valueFrom:
       secretKeyRef:
-        name: elasticsearch-master-credentials
-        key: username
-  - name: ELASTICSEARCH_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: elasticsearch-master-credentials
-        key: password
-#  - name: SERVICE_ACCOUNT_TOKEN
-#    valueFrom:
-#      secretKeyRef:
-#        name: kibana-kibana-es-token
-#       key: token
+        name: kibana-kibana  # This is the key change - match what Elasticsearch expects
+        key: token
   - name: "NODE_OPTIONS"
     value: "--max-old-space-size=512"
 #  - name: MY_ENVIRONMENT_VAR
@@ -80,20 +70,9 @@ healthCheckPath: "/app/kibana"
 
 # Allows you to add any config files in /usr/share/kibana/config/
 # such as kibana.yml
-kibanaConfig: 
-   kibana.yml: |
-    elasticsearch.hosts: ["https://elasticsearch-master:9200"]
-    elasticsearch.ssl.certificateAuthorities: ["/usr/share/kibana/config/certs/ca.crt"]
-    elasticsearch.ssl.verificationMode: certificate
-    # Use environment variables for credentials
-    elasticsearch.username: ${ELASTICSEARCH_USERNAME}
-    elasticsearch.password: ${ELASTICSEARCH_PASSWORD}
-    
-    # Add encryption keys to resolve warnings
-    xpack.security.encryptionKey: "a7a6311933d3503b89bc2dbc36572c01a6b9e7fcb6f12eb0b66b6cd4a51e5d42"
-    xpack.encryptedSavedObjects.encryptionKey: "a7a6311933d3503b89bc2dbc36572c01a6b9e7fcb6f12eb0b66b6cd4a51e5d42"
-    xpack.reporting.encryptionKey: "a7a6311933d3503b89bc2dbc36572c01a6b9e7fcb6f12eb0b66b6cd4a51e5d42"
-
+kibanaConfig: {}
+   #kibana.yml: 
+   
 # If Pod Security Policy in use it may be required to specify security context as well as service account
 
 podSecurityContext:
