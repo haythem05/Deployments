@@ -52,7 +52,7 @@ envFrom: []
 # Disable it to use your own elastic-credential Secret.
 secret:
   enabled: true
-  password: "VE9lcUVsMEVjZGNqcHltVA=="
+  password: "password123"
    # generated randomly if not defined
 
 # A list of secrets and their paths to mount inside the pod
