@@ -449,6 +449,8 @@ config:
         tls On
         tls.verify Off
         tls.debug 1
+        Generate_ID On
+
 
     [OUTPUT]
         Name es
@@ -465,6 +467,8 @@ config:
         tls On
         tls.verify Off
         tls.debug 1
+        Generate_ID On
+
 
   ## https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/upstream-servers
   ## This configuration is deprecated, please use `extraFiles` instead.
