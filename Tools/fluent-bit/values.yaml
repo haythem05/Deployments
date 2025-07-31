@@ -452,7 +452,6 @@ config:
         Generate_ID On
         Trace_Output On
 
-
     [OUTPUT]
         Name es
         Match host.*
