@@ -443,7 +443,8 @@ config:
         Index fluent-bit-%Y.%m.%d
         Logstash_Format On
         Logstash_Prefix logstash
-        Retry_Limit False
+        Retry_Limit 5          
+        Buffer_Size 512KB      
         Suppress_Type_Name On
         tls On
         tls.verify Off
@@ -457,8 +458,9 @@ config:
         HTTP_User elastic
         HTTP_Passwd password123
         Logstash_Format On
-        Logstash_Prefix node
-        Retry_Limit False
+        Logstash_Prefix node  
+        Retry_Limit 5          
+        Buffer_Size 512KB
         Suppress_Type_Name On
         tls On
         tls.verify Off
