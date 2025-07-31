@@ -448,7 +448,6 @@ config:
         tls.verify Off
         tls.debug 1
 
-      
     [OUTPUT]
         Name es
         Match host.*
