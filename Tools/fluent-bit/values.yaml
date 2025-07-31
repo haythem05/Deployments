@@ -411,8 +411,7 @@ config:
         Inotify_Watcher false
         Read_from_Head false
         
-
-     [INPUT]
+    [INPUT]
         Name systemd
         Tag host.*
         Systemd_Filter _SYSTEMD_UNIT=kubelet.service
@@ -451,6 +450,7 @@ config:
         tls.debug 1
         Generate_ID On
         Trace_Output On
+
 
     [OUTPUT]
         Name es
