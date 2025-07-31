@@ -649,6 +649,9 @@ extraObjects:
       generators:
         - list:
             elements:
+              - name: fluent-bit
+                appPath: Tools/elasticsearch
+                namespace: efk
               - name: kibana 
                 appPath: Tools/kibana
                 namespace: efk
