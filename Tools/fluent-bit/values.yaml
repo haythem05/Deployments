@@ -441,7 +441,6 @@ config:
         HTTP_User elastic
         HTTP_Passwd password123
         Index fluent-bit-%Y.%m.%d
-        Type _doc
         Logstash_Format On
         Logstash_Prefix logstash
         Retry_Limit False
