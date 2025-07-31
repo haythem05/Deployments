@@ -397,6 +397,7 @@ config:
         HTTP_Listen 0.0.0.0
         HTTP_Port 2020
         Health_Check On
+        Log_Level debug
 
   ## https://docs.fluentbit.io/manual/pipeline/inputs
   inputs: |
@@ -449,7 +450,7 @@ config:
         tls.verify Off
         tls.debug 1
         Generate_ID On
-        Trace_Output On
+        
 
 
     [OUTPUT]
@@ -468,7 +469,7 @@ config:
         tls.verify Off
         tls.debug 1
         Generate_ID On
-        Trace_Output On
+        
 
 
   ## https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/upstream-servers
