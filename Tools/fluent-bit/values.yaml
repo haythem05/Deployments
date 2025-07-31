@@ -444,7 +444,11 @@ config:
         Logstash_Prefix logstash
         Retry_Limit False
         Suppress_Type_Name On
+        tls On
+        tls.verify Off
+        tls.debug 1
 
+      
     [OUTPUT]
         Name es
         Match host.*
@@ -455,6 +459,9 @@ config:
         Logstash_Format On
         Logstash_Prefix node
         Retry_Limit False
+        tls On
+        tls.verify Off
+        tls.debug 1
 
   ## https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/upstream-servers
   ## This configuration is deprecated, please use `extraFiles` instead.
