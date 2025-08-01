@@ -357,12 +357,12 @@ flush: 1
 
 metricsPort: 2020
 
-extraPorts: []
-#   - port: 5170
-#     containerPort: 5170
-#     protocol: TCP
-#     name: tcp
-#     nodePort: 30517
+extraPorts: 
+    - port: 2020
+      containerPort: 2020
+      protocol: TCP
+      name: http
+      #nodePort: 30517
 
 extraVolumes: []
 
