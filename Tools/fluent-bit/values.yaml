@@ -404,7 +404,7 @@ config:
     [INPUT]
         Name tail
         Path /var/log/containers/*.log
-        multiline.parser docker, cri
+        Parser cri
         Tag kube.*
         Mem_Buf_Limit 50MB
         Skip_Long_Lines On
@@ -479,8 +479,8 @@ config:
   ## https://docs.fluentbit.io/manual/pipeline/parsers
   customParsers: |
     [PARSER]
-        Name docker_no_time
-        Format json
+        Name cri
+        Format cri
         Time_Keep Off
         Time_Key time
         Time_Format %Y-%m-%dT%H:%M:%S.%L
