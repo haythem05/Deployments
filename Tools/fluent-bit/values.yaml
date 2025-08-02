@@ -411,8 +411,8 @@ config:
         Refresh_Interval 10
         Inotify_Watcher false
         Read_from_Head true
-        DB /var/log/flb_kube.db          # Add database for tracking
-        DB.Sync Normal                   # Add sync mode
+        DB /var/log/flb_kube.db          
+        DB.Sync Normal                   
         Multiline Off 
         
     [INPUT]
