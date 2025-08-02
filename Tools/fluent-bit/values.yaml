@@ -210,11 +210,11 @@ readinessProbe:
 
 resources: 
     limits:
-      cpu: 200m
-      memory: 256Mi
+      cpu: 500m
+      memory: 1Gi
     requests:
-      cpu: 100m
-      memory: 128Mi
+      cpu: 200m
+      memory: 512Mi
 
 ## only available if kind is Deployment
 ingress:
@@ -406,14 +406,17 @@ config:
         Path /var/log/containers/*.log
         Parser cri
         Tag kube.*
-        Mem_Buf_Limit 50MB
+        Mem_Buf_Limit 100MB
         Skip_Long_Lines On
         Refresh_Interval 10
         Inotify_Watcher false
         Read_from_Head true
         DB /var/log/flb_kube.db          
         DB.Sync Normal                   
-        Multiline Off 
+        Multiline Off
+        DB.locking true
+        Buffer_Chunk_Size 32k
+        Buffer_Max_Size 5MB
         
     [INPUT]
         Name systemd
