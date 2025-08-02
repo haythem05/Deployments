@@ -206,7 +206,7 @@ livenessProbe:
 readinessProbe:
   httpGet:
     path: /api/v1/health
-    port: http
+    port: 2020
 
 resources: 
     limits:
