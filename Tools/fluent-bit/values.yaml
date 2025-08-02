@@ -411,6 +411,10 @@ config:
         Refresh_Interval 10
         Inotify_Watcher false
         Read_from_Head false
+        DB /var/log/flb_kube.db          # Add database for tracking
+        DB.Sync Normal                   # Add sync mode
+        Ignore_Older 24h                 # Don't ignore recent files
+        Multiline Off 
         
     [INPUT]
         Name systemd
