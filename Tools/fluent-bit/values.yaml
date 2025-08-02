@@ -203,10 +203,10 @@ livenessProbe:
     path: /
     port: http
 
-readinessProbe: {}
-  #httpGet:
-   # path: /api/v1/health
-    #port: 2020
+readinessProbe: 
+   httpGet:
+     path: /api/v1/health
+     port: http-metrics
 
 resources: 
     limits:
@@ -361,7 +361,7 @@ extraPorts:
     - port: 2020
       containerPort: 2020
       protocol: TCP
-      name: http
+      name: http-metrics
       #nodePort: 30517
 
 extraVolumes: []
