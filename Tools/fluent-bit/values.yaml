@@ -116,7 +116,7 @@ service:
   #  - 2.2.2.2
 
 serviceMonitor:
-  enabled: false
+  enabled: true
   #   namespace: monitoring
   #   interval: 10s
   #   scrapeTimeout: 10s
