@@ -419,6 +419,10 @@ config:
         Buffer_Max_Size 5MB
         Rotate_Wait 30
         Ignore_Older 24h
+        DB.journal_mode WAL
+        Skip_Empty_Lines On
+        storage.pause_on_chunks_overlimit off
+        
         
         
     [INPUT]
