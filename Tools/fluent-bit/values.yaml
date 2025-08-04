@@ -444,7 +444,7 @@ config:
         Port 9200
         HTTP_User elastic
         HTTP_Passwd password123
-        Logstash_Format On
+        
         Logstash_Prefix kube-logs
         Type _doc
         Suppress_Type_Name On
@@ -461,7 +461,7 @@ config:
         Port 9200
         HTTP_User elastic
         HTTP_Passwd password123
-        Logstash_Format On
+        
         Logstash_Prefix node  
         Retry_Limit 5          
         Buffer_Size 512KB
