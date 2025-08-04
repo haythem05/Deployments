@@ -389,33 +389,30 @@ config:
   service: |
     [SERVICE]
         Daemon Off
-        Flush 3
-        Log_Level trace
+        Flush 1
         Parsers_File /fluent-bit/etc/parsers.conf
         Parsers_File /fluent-bit/etc/conf/custom_parsers.conf
         HTTP_Server On
         HTTP_Listen 0.0.0.0
         HTTP_Port 2020
         Health_Check off
-        Log_Level debug
+        Log_Level trace
 
   ## https://docs.fluentbit.io/manual/pipeline/inputs
   inputs: |
     [INPUT]
         Name tail
         Path /var/log/containers/*.log
-        multiline.parser cri
+        Parser cri
         Tag kube.*
         Mem_Buf_Limit 100MB
         Skip_Long_Lines On
-        Refresh_Interval 5
-        Inotify_Watcher false
+        Refresh_Interval 10
         Read_from_Head true
-        Buffer_Chunk_Size 32k
-        Buffer_Max_Size 5MB
-        Rotate_Wait 30
         Skip_Empty_Lines On
         storage.pause_on_chunks_overlimit off
+        DB /var/log/flb-storage/tail.db
+        DB.Sync Normal
         
         
         
@@ -434,7 +431,7 @@ config:
         Kube_CA_File /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         Kube_Token_File /var/run/secrets/kubernetes.io/serviceaccount/token
         Merge_Log On
-        Keep_Log On
+        Keep_Log Off
         K8S-Logging.Parser On
         K8S-Logging.Exclude On
 
@@ -447,15 +444,12 @@ config:
         Port 9200
         HTTP_User elastic
         HTTP_Passwd password123
-        Index fluent-bit-%Y.%m.%d
         Logstash_Format On
-        Logstash_Prefix logstash
-        Retry_Limit 5          
-        Buffer_Size 512KB      
+        Logstash_Prefix kube-logs
+        Type _doc
         Suppress_Type_Name On
         tls On
         tls.verify Off
-        tls.debug 1
         Generate_ID On
         
 
@@ -487,10 +481,11 @@ config:
   customParsers: |
     [PARSER]
         Name cri
-        Format json
+        Format regex
+        Regex ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<log>.*)$
         Time_Keep Off
         Time_Key time
-        Time_Format %Y-%m-%dT%H:%M:%S.%L
+        Time_Format %Y-%m-%dT%H:%M:%S.%L%z
 
   # This allows adding more files with arbitrary filenames to /fluent-bit/etc/conf by providing key/value pairs.
   # The key becomes the filename, the value becomes the file content.
