@@ -390,7 +390,7 @@ config:
     [SERVICE]
         Daemon Off
         Flush 3
-        Log_Level info
+        Log_Level trace
         Parsers_File /fluent-bit/etc/parsers.conf
         Parsers_File /fluent-bit/etc/conf/custom_parsers.conf
         HTTP_Server On
@@ -411,6 +411,7 @@ config:
         Refresh_Interval 5
         Inotify_Watcher false
         Read_from_Head true
+        DB /var/log/flb_kube_debug.db
         DB.Sync Normal                   
         Multiline Off
         DB.locking true
