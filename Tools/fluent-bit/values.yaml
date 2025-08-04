@@ -411,8 +411,7 @@ config:
         Read_from_Head true
         Skip_Empty_Lines On
         storage.pause_on_chunks_overlimit off
-        DB /var/log/flb-storage/tail.db
-        DB.Sync Normal
+        
         
         
         
