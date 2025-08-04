@@ -396,7 +396,7 @@ config:
         HTTP_Server On
         HTTP_Listen 0.0.0.0
         HTTP_Port 2020
-        Health_Check On
+        Health_Check off
         Log_Level debug
 
   ## https://docs.fluentbit.io/manual/pipeline/inputs
@@ -414,7 +414,6 @@ config:
         Buffer_Chunk_Size 32k
         Buffer_Max_Size 5MB
         Rotate_Wait 30
-        Ignore_Older 3h
         Skip_Empty_Lines On
         storage.pause_on_chunks_overlimit off
         
@@ -488,7 +487,7 @@ config:
   customParsers: |
     [PARSER]
         Name cri
-        Format cri
+        Format json
         Time_Keep Off
         Time_Key time
         Time_Format %Y-%m-%dT%H:%M:%S.%L
