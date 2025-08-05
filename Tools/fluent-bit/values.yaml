@@ -468,7 +468,7 @@ config:
         tls.verify Off
         tls.debug 1
         Generate_ID On
-        
+
     [OUTPUT]
         Name es
         Match *
@@ -527,6 +527,14 @@ daemonSetVolumes:
     hostPath:
       path: /etc/machine-id
       type: File
+  - name: varlogpods
+    hostPath:
+      path: /var/log/pods
+  - name: varlogcontainers
+    hostPath:
+      path: /var/log/containers
+      
+      
 
 daemonSetVolumeMounts:
   - name: varlog
@@ -537,6 +545,12 @@ daemonSetVolumeMounts:
   - name: etcmachineid
     mountPath: /etc/machine-id
     readOnly: true
+  - name: varlogpods
+    mountPath: /var/log/pods
+    readOnly: true
+  - name: varlogcontainers
+    mountPath: /var/log/containers
+    readOnly: true    
 
 command:
   - /fluent-bit/bin/fluent-bit
