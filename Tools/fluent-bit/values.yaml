@@ -402,7 +402,7 @@ config:
   inputs: |
     [INPUT]
         Name tail
-        Path /var/log/containers/*.log
+        Path /var/log/pods/*/*/*.log
         multiline.parser cri
         Tag kube.*
         Mem_Buf_Limit 100MB
