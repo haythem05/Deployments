@@ -410,7 +410,7 @@ config:
         Refresh_Interval 10
         Read_from_Head true
         Skip_Empty_Lines On
-        Inotify_Watcher false
+        Inotify_Watcher On
         storage.pause_on_chunks_overlimit off
         
         
