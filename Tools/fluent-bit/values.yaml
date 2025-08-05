@@ -451,8 +451,6 @@ config:
         tls On
         tls.verify Off
         Generate_ID On
-        
-
 
     [OUTPUT]
         Name es
@@ -470,6 +468,21 @@ config:
         tls.verify Off
         tls.debug 1
         Generate_ID On
+        
+    [OUTPUT]
+        Name es
+        Match *
+        Host elasticsearch-master.efk.svc.cluster.local
+        Port 9200
+        HTTP_User elastic
+        HTTP_Passwd password123
+        Logstash_Format On
+        Logstash_Prefix raw-logs
+        Suppress_Type_Name On
+        tls On
+        tls.verify Off
+        Generate_ID On
+    
         
 
 
