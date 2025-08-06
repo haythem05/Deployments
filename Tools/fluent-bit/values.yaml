@@ -405,8 +405,8 @@ config:
   inputs: |
     [INPUT]
         Name tail
-        Path /var/log/pods/*/*/*.log
-        multiline.parser cri
+        Path /var/log/containers/*.log
+        multiline.parser cri, docker
         Tag kube.*
         Mem_Buf_Limit 100MB
         Skip_Long_Lines On
