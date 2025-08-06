@@ -359,11 +359,11 @@ flush: 1
 
 metricsPort: 2020
 
-extraPorts: 
-    - port: 2020
-      containerPort: 2020
-      protocol: TCP
-      name: http-metrics
+extraPorts: []
+  #  - port: 2020
+   #   containerPort: 2020
+    #  protocol: TCP
+     # name: http-metrics
       #nodePort: 30517
 
 extraVolumes: []
