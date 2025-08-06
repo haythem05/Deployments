@@ -399,11 +399,13 @@ config:
         HTTP_Port 2020
         Health_Check off
         Log_Level trace
+        storage.metrics on
 
   ## https://docs.fluentbit.io/manual/pipeline/inputs
   inputs: |
     [INPUT]
         Name tail
+        Path /var/log/pods/*/*/*.log
         Path /var/log/containers/*.log
         multiline.parser cri
         Tag kube.*
@@ -429,6 +431,7 @@ config:
     [FILTER]
         Name kubernetes
         Match kube.*       
+        Kube_meta_Path /var/log/pods
         Kube_URL https://kubernetes.default.svc:443
         Kube_CA_File /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         Kube_Token_File /var/run/secrets/kubernetes.io/serviceaccount/token
@@ -463,8 +466,8 @@ config:
         HTTP_Passwd password123
         Logstash_Format On
         Logstash_Prefix node  
-        Retry_Limit 5          
-        Buffer_Size 512KB
+        Retry_Limit 10  
+        Buffer_Size 2MB
         Suppress_Type_Name On
         tls On
         tls.verify Off
