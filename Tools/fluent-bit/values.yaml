@@ -428,7 +428,7 @@ config:
     [FILTER]
         Name lua
         Match kube.*
-        Script /fluent-bit/etc/extract_namespace.lua
+        Script /fluent-bit/etc/conf/extract_namespace.lua
         Call extract_namespace
 
     [FILTER]
