@@ -412,7 +412,7 @@ config:
         Refresh_Interval 5
         Read_from_Head true
         Skip_Empty_Lines On
-        Inotify_Watcher On
+        Inotify_Watcher false
         DB /tmp/fluentbit.db
         DB.Sync full
         storage.pause_on_chunks_overlimit off
