@@ -428,7 +428,7 @@ config:
     [FILTER]
         Name kubernetes
         Match kube.*     
-        Kube_Tag_Prefix kube.var.log.pods.
+        Kube_Tag_Prefix kube.
         Kube_URL https://kubernetes.default.svc:443
         Kube_CA_File /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         Kube_Token_File /var/run/secrets/kubernetes.io/serviceaccount/token
@@ -447,7 +447,7 @@ config:
         HTTP_User elastic
         HTTP_Passwd password123
         Logstash_Format On
-        Logstash_Prefix kube-logs
+        Logstash_Prefix kube
         Type _doc
         Suppress_Type_Name On
         tls On
