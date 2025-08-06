@@ -413,7 +413,8 @@ config:
         Read_from_Head true
         Skip_Empty_Lines On
         Inotify_Watcher On
-        storage.type filesystem
+        DB /tmp/fluentbit.db
+        DB.Sync full
         storage.pause_on_chunks_overlimit off
         
         
