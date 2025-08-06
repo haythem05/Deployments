@@ -406,7 +406,6 @@ config:
     [INPUT]
         Name tail
         Path /var/log/pods/*/*/*.log
-        DB /var/log/flb-storage/tail.db
         multiline.parser cri
         Tag kube.*
         Mem_Buf_Limit 100MB
