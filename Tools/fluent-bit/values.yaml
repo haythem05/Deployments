@@ -89,13 +89,13 @@ hostAliases: []
 #     - "foo.local"
 #     - "bar.local"
 
-securityContext: {}
+securityContext: 
 #   capabilities:
 #     drop:
 #     - ALL
 #   readOnlyRootFilesystem: true
-#   runAsNonRoot: true
-#   runAsUser: 1000
+    runAsNonRoot: false
+    runAsUser: 0
 
 service:
   type: ClusterIP
