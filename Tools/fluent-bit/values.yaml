@@ -430,7 +430,7 @@ config:
     [FILTER]
         Name kubernetes
         Match kube.*       
-        Kube_meta_Path /var/log/pods
+        Kube_meta_Preload_Cache_Dir /var/log/pods
         Kube_URL https://kubernetes.default.svc:443
         Kube_CA_File /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         Kube_Token_File /var/run/secrets/kubernetes.io/serviceaccount/token
