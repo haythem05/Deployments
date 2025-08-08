@@ -6,7 +6,6 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: "SkipReplicaField" 
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: login-microservice
