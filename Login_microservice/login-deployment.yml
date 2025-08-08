@@ -4,7 +4,7 @@ metadata:
   name: login-microservice
   namespace: microservices
   annotations:
-    argocd.argoproj.io/sync-options: SkipReplicaField 
+    argocd.argoproj.io/sync-options: "SkipReplicaField" 
 spec:
   replicas: 1
   selector:
@@ -42,8 +42,8 @@ spec:
               value: "false"
           resources:
           requests:
-            memory: "512Mi"
-            cpu: "500m"
+            memory: "384Mi"
+            cpu: "30m"
           limits:
-            memory: "1024Mi"
-            cpu: "1001m"    
+            memory: "768Mi"
+            cpu: "250m"    
