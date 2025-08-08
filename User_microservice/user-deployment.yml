@@ -41,9 +41,9 @@ spec:
             - name: MAIL_ENABLED
               value: "false"
           resources:
-          requests:
-            memory: "384Mi"
-            cpu: "50m"
-          limits:
-            memory: "768Mi"
-            cpu: "250m"  
+           requests:
+              memory: "384Mi"
+              cpu: "50m"
+           limits:
+             memory: "768Mi"
+             cpu: "250m"  
