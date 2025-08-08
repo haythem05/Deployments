@@ -71,7 +71,7 @@ controllerManager:
   # Custom priorityClassName for using pod priorities
   priorityClassName: ""
   # Replicas for chaos-controller-manager
-  replicaCount: 3
+  replicaCount: 2
   # image would be constructed by <registry>/<repository>:<tag>
   image:
     # override global registry, empty value means using the global images.registry
@@ -108,9 +108,9 @@ controllerManager:
     # choice for the user. This also increases chances charts run on environments with little
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
     # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-    limits: {}
-    #  cpu: 500m
-    #  memory: 1024Mi
+    limits: 
+      cpu: 500m
+      memory: 512Mi
     requests:
       cpu: 25m
       memory: 256Mi
@@ -137,11 +137,11 @@ controllerManager:
     # Enable leader election for controller manager.
     enabled: true
     # The duration that non-leader candidates will wait to force acquire leadership. This is measured against time of last observed ack.
-    leaseDuration: 15s
+    leaseDuration: 60s
     # The duration that the acting control-plane will retry refreshing leadership before giving up.
-    renewDeadline: 10s
+    renewDeadline: 45s
     # The duration the LeaderElector clients should wait between tries of actions.
-    retryPeriod: 2s
+    retryPeriod: 10s
   # chaosdSecurityMode is enabled for mTLS connection between chaos-controller-manager and chaosd
   chaosdSecurityMode: true
   # multi cluster install offline helm chart path
@@ -226,17 +226,17 @@ chaosDaemon:
 
   # CPU/Memory resource requests/limits for chaosDaemon container
   resources:
-    {}
+    
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
     # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-    # limits:
-    #   cpu: 500m
-    #   memory: 1024Mi
-    # requests:
-    #   cpu: 250m
-    #   memory: 512Mi
+     limits:
+       cpu: 500m
+       memory: 512Mi
+     requests:
+       cpu: 100m
+       memory: 256Mi
   # Node labels for chaos-daemon pod assignment
   nodeSelector: {}
   # Toleration labels for chaos-daemon pod assignment
@@ -464,9 +464,9 @@ dnsServer:
     # choice for the user. This also increases chances charts run on environments with little
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
     # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-    limits: {}
-    #  cpu: 500m
-    #  memory: 1024Mi
+    limits: 
+      cpu: 200m
+      memory: 128Mi
     requests:
       cpu: 100m
       memory: 70Mi
