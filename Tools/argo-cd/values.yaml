@@ -649,10 +649,16 @@ extraObjects:
       generators:
         - list:
             elements:
+              - name: hpa-microservices
+                appPath: horizentalpodscaler
+                namespace: microservices
+              - name: metrics-server
+                appPath: Tools/metrics-server
+                namespace: metrics-server
               - name: fluent-bit
-                appPath: Tools/elasticsearch
+                appPath: Tools/fluent-bit
                 namespace: efk
-              - name: kibana 
+              - name: kibana
                 appPath: Tools/kibana
                 namespace: efk
               - name: elasticsearch
@@ -682,9 +688,6 @@ extraObjects:
               - name: prometheus-stack-helm
                 appPath: Tools/prometheus-stack
                 namespace: monitoring
-              - name: loki-stack
-                appPath: Tools/loki-stack
-                namespace: logging
               - name: minio
                 appPath: Tools/minio
                 namespace: minio
