@@ -4,6 +4,8 @@ metadata:
   name: user-microservice
   labels:
     app: user-microservice
+  annotations:
+    argocd.argoproj.io/sync-options: SkipReplicaField     
 spec:
   replicas: 1
   selector:
