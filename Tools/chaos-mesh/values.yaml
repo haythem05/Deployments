@@ -71,7 +71,7 @@ controllerManager:
   # Custom priorityClassName for using pod priorities
   priorityClassName: ""
   # Replicas for chaos-controller-manager
-  replicaCount: 2
+  replicaCount: 1
   # image would be constructed by <registry>/<repository>:<tag>
   image:
     # override global registry, empty value means using the global images.registry
